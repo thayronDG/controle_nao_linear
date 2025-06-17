@@ -36,11 +36,6 @@ Kv = np.diag([10, 15, 10, 18, 22, 18])
 # ... imports e parâmetros ...
 
 def desired_attitude(t):
-    ## Primeira trajetória: linha reta
-    # theta = 0
-    # phi = 0
-    # psi = 0
-    
     # trajetória espiral
     dx = 5 * np.sin(t)
     dy = 5 * np.cos(t)
