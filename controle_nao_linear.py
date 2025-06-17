@@ -152,7 +152,7 @@ plt.ylabel('Position (m)')
 plt.title('VTOL Spiral Trajectory Tracking')
 plt.legend()
 plt.grid()
-plt.show()
+# plt.show()
 
 
 
@@ -201,7 +201,7 @@ plt.grid()
 plt.legend()
 
 plt.tight_layout()
-plt.show()
+# plt.show()
 
 
 
