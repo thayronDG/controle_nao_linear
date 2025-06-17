@@ -54,15 +54,17 @@ def desired_trajectory(t):
     #     pos = np.array([45, 0, 0])
     
     # Segunda trajetória: linha costura
-    # if t < 3:
-    #     pos = np.array([0, 0, -5])
-    # elif 3 <= t < 15:
-    #     pos = np.array([2 * t, np.sin(2 * t), -5])
-    # elif 15 <= t <= 20:
-    #     pos = np.array([2 * t, 0, 0])
+    if t < 3:
+        pos = np.array([0, 0, -5])
+    elif 3 <= t < 15:
+        pos = np.array([2 * t, np.sin(2 * t), -5])
+    elif 15 <= t <= 20:
+        pos = np.array([2 * t, 0, 0])
+    else:
+        pos = np.array([40, 0, 0])
         
     ## Terceira trajetória: espiral    
-    pos = np.array([5 * np.cos(t), 5 * np.sin(t), t])
+    # pos = np.array([5 * np.cos(t), 5 * np.sin(t), t])
     
     theta, phi, psi = desired_attitude(t)
     return np.concatenate([pos, [theta, phi, psi]])
