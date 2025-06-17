@@ -160,7 +160,7 @@ psi_ref   = ref_angles[:, 2]
 # Plot attitude angles with reference (without control as dashed)
 plt.figure(figsize=(10, 8))
 # Phi plot
-plt.subplot(3, 1, 2)
+plt.subplot(3, 1, 1)
 plt.plot(sol.t, phi, label='Phi (controlled)', color='g')
 plt.plot(sol.t, phi_ref, '--', label='Phi (reference)', color='gray')
 plt.title('Phi (Roll)')
@@ -171,7 +171,7 @@ plt.ticklabel_format(axis='y', style='sci', scilimits=(-3, -3))
 plt.grid()
 plt.legend()
 # Theta plot
-plt.subplot(3, 1, 1)
+plt.subplot(3, 1, 2)
 plt.plot(sol.t, theta, label='Theta (controlled)', color='b')
 plt.plot(sol.t, theta_ref, '--', label='Theta (reference)', color='gray')
 plt.title('Theta (Pitch)')
