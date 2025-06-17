@@ -53,11 +53,11 @@ def desired_trajectory(t):
     
     ## Primeira trajetória: linha reta
     # if t < 5:
-    #     pos = np.array([0, 0, -5])
+    #     pos = np.hstack([0, 0, -5])
     # elif 5 <= t < 15:
-    #     pos = np.array([45, 0, -5])
+    #     pos = np.hstack([45, 0, -5])
     # elif t >= 15:
-    #     pos = np.array([45, 0, 0])
+    #     pos = np.hstack([45, 0, 0])
     
     # Segunda trajetória: linha costura
     # if t < 3:
@@ -116,7 +116,7 @@ def dynamics(t, state):
     Mz = Y[5] @ u
 
     acc = np.array([Fx, Fy, Fz]) / m
-    I = np.array([[Ixx, 0, Ixz],
+    I = np.array([[Ixx, 0, Ixz],                                
               [0, Iyy, 0],
               [Ixz, 0, Izz]])
     ang_acc = np.linalg.inv(I) @ np.array([Mx, My, Mz])
@@ -180,15 +180,6 @@ psi_ref   = ref_angles[:, 2]
 
 # Plot attitude angles with reference (without control as dashed)
 plt.figure(figsize=(10, 8))
-# Theta plot
-plt.subplot(3, 1, 1)
-plt.plot(sol.t, theta, label='Theta (controlled)', color='b')
-plt.plot(sol.t, theta_ref, '--', label='Theta (reference)', color='gray')
-plt.title('Theta (Pitch)')
-plt.xlabel('Time (s)')
-plt.ylabel('Angle (rad)')
-plt.grid()
-plt.legend()
 # Phi plot
 plt.subplot(3, 1, 2)
 plt.plot(sol.t, phi, label='Phi (controlled)', color='g')
@@ -196,6 +187,20 @@ plt.plot(sol.t, phi_ref, '--', label='Phi (reference)', color='gray')
 plt.title('Phi (Roll)')
 plt.xlabel('Time (s)')
 plt.ylabel('Angle (rad)')
+plt.ylim(-5e-3, 10e-3) 
+plt.ticklabel_format(axis='y', style='sci', scilimits=(-3, -3))
+plt.xlim(0, 100)
+plt.grid()
+plt.legend()
+# Theta plot
+plt.subplot(3, 1, 1)
+plt.plot(sol.t, theta, label='Theta (controlled)', color='b')
+plt.plot(sol.t, theta_ref, '--', label='Theta (reference)', color='gray')
+plt.title('Theta (Pitch)')
+plt.xlabel('Time (s)')
+plt.ylabel('Angle (rad)')
+plt.ylim(-10, 10)
+plt.xlim(0, 100)
 plt.grid()
 plt.legend()
 # Psi plot
@@ -205,6 +210,7 @@ plt.plot(sol.t, psi_ref, '--', label='Psi (reference)', color='gray')
 plt.title('Psi (Yaw)')
 plt.xlabel('Time (s)')
 plt.ylabel('Angle (rad)')
+plt.xlim(0, 100)
 plt.grid()
 plt.legend()
 
