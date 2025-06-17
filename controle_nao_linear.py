@@ -36,7 +36,13 @@ Kv = np.diag([10, 15, 10, 18, 22, 18])
 # ... imports e parâmetros ...
 
 def desired_attitude(t):
-    dx = -5 * np.sin(t)
+    ## Primeira trajetória: linha reta
+    # theta = 0
+    # phi = 0
+    # psi = 0
+    
+    # trajetória espiral
+    dx = 5 * np.sin(t)
     dy = 5 * np.cos(t)
     psi = np.arctan2(dy, dx)
     theta = 0
@@ -54,17 +60,17 @@ def desired_trajectory(t):
     #     pos = np.array([45, 0, 0])
     
     # Segunda trajetória: linha costura
-    if t < 3:
-        pos = np.array([0, 0, -5])
-    elif 3 <= t < 15:
-        pos = np.array([2 * t, np.sin(2 * t), -5])
-    elif 15 <= t <= 20:
-        pos = np.array([2 * t, 0, 0])
-    else:
-        pos = np.array([40, 0, 0])
+    # if t < 3:
+    #     pos = np.array([0, 0, -5])
+    # elif 3 <= t < 15:
+    #     pos = np.array([2 * t, np.sin(2 * t), -5])
+    # elif 15 <= t <= 20:
+    #     pos = np.array([2 * t, 0, 0])
+    # else:
+    #     pos = np.array([40, 0, 0])
         
     ## Terceira trajetória: espiral    
-    # pos = np.array([5 * np.cos(t), 5 * np.sin(t), t])
+    pos = np.array([5 * np.cos(t), 5 * np.sin(t), -t])
     
     theta, phi, psi = desired_attitude(t)
     return np.concatenate([pos, [theta, phi, psi]])
