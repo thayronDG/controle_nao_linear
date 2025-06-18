@@ -140,6 +140,8 @@ plt.plot(sol.t, ref_traj[:, 1], '--', label='y ref (m)', color='tab:orange', alp
 plt.title('Y Position')
 plt.xlabel('Time (s)')
 plt.ylabel('y (m)')
+plt.ylim(-20e-6, 5e-6) 
+plt.ticklabel_format(axis='y', style='sci', scilimits=(-6, -6))
 plt.grid()
 plt.legend()
 # Z
