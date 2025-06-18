@@ -124,23 +124,37 @@ sol = solve_ivp(dynamics, t_span, state0, t_eval=t_eval, rtol=1e-6)
 
 
 # Plot results com referência pontilhada
-plt.figure(figsize=(10, 6))
-# Trajetória simulada
-plt.plot(sol.t, sol.y[0], label='x (m)')
-plt.plot(sol.t, sol.y[1], label='y (m)')
-plt.plot(sol.t, sol.y[2], label='z (m)')
-
-# Trajetória de referência (pontilhada)
+plt.figure(figsize=(10, 8))
 ref_traj = np.array([desired_trajectory(t) for t in sol.t])
+# X
+plt.subplot(3, 1, 1)
+plt.plot(sol.t, sol.y[0], label='x (m)', color='tab:blue')
 plt.plot(sol.t, ref_traj[:, 0], '--', label='x ref (m)', color='tab:blue', alpha=0.5)
-plt.plot(sol.t, ref_traj[:, 1], '--', label='y ref (m)', color='tab:orange', alpha=0.5)
-plt.plot(sol.t, ref_traj[:, 2], '--', label='z ref (m)', color='tab:green', alpha=0.5)
-
+plt.title('X Position')
 plt.xlabel('Time (s)')
-plt.ylabel('Position (m)')
-plt.title('VTOL Spiral Trajectory Tracking')
-plt.legend()
+plt.ylabel('x (m)')
 plt.grid()
+plt.legend()
+# Y
+plt.subplot(3, 1, 2)
+plt.plot(sol.t, sol.y[1], label='y (m)', color='tab:orange')
+plt.plot(sol.t, ref_traj[:, 1], '--', label='y ref (m)', color='tab:orange', alpha=0.5)
+plt.title('Y Position')
+plt.xlabel('Time (s)')
+plt.ylabel('y (m)')
+plt.grid()
+plt.legend()
+# Z
+plt.subplot(3, 1, 3)
+plt.plot(sol.t, sol.y[2], label='z (m)', color='tab:green')
+plt.plot(sol.t, ref_traj[:, 2], '--', label='z ref (m)', color='tab:green', alpha=0.5)
+plt.title('Z Position')
+plt.xlabel('Time (s)')
+plt.ylabel('z (m)')
+plt.grid()
+plt.legend()
+
+plt.tight_layout()
 # plt.show()
 
 
@@ -215,5 +229,6 @@ ax.set_xlabel('X (m)')
 ax.set_ylabel('Y (m)')
 ax.set_zlabel('Z (m)')
 ax.set_title('3D Trajectory of VTOL')
+ax.set_zlim(ax.get_zlim()[1], ax.get_zlim()[0])
 ax.legend()
 plt.show()
