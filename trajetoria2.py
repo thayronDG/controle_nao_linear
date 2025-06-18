@@ -133,6 +133,7 @@ plt.plot(sol.t, ref_traj[:, 0], '--', label='x ref (m)', color='tab:blue', alpha
 plt.title('X Position')
 plt.xlabel('Time (s)')
 plt.ylabel('x (m)')
+plt.xlim(0, 20)
 plt.grid()
 plt.legend()
 # Y
@@ -142,6 +143,7 @@ plt.plot(sol.t, ref_traj[:, 1], '--', label='y ref (m)', color='tab:orange', alp
 plt.title('Y Position')
 plt.xlabel('Time (s)')
 plt.ylabel('y (m)')
+plt.xlim(0, 20)
 plt.grid()
 plt.legend()
 # Z
@@ -151,6 +153,7 @@ plt.plot(sol.t, ref_traj[:, 2], '--', label='z ref (m)', color='tab:green', alph
 plt.title('Z Position')
 plt.xlabel('Time (s)')
 plt.ylabel('z (m)')
+plt.xlim(0, 20)
 plt.grid()
 plt.legend()
 
