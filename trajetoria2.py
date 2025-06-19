@@ -84,6 +84,7 @@ def dynamics(t, state):
     delta_es = -np.concatenate([Kp_pos @ e[0:3], Kp_att @ e[3:6]])
     delta_di = -Kv @ edot
     delta = delta_es + delta_di
+    delta[2] += m * g
 
     # Control allocation (pseudo-inverse)
     u = np.linalg.pinv(Y) @ delta
