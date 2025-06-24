@@ -31,7 +31,7 @@ CN0, CNb, CNp, CNr = 3.205e-18, -0.195, -0.117, 0.096
 # Control gains
 Kp_pos = np.diag([23, 28, 23])
 Kp_att = np.diag([46, 57, 46])
-Kv = np.diag([10, 15, 10, 18, 22, 18])
+Kv = np.diag([20, 15, 20, 18, 22, 18])
 
 # ... imports e parâmetros ...
 
